@@ -46,18 +46,18 @@ Original data description
 ---------------------------------------------------------------------------------------------
 
 Files used in analysis
-    features.txt: 561 rows of 2 varibles (feature Identifier and name)
+    features.txt: 561 rows of 2 varibles (feature identifier and name)
     activity_labels.txt: 6 rows of 2 variables (activity identifier and name)
 
 Test Dataset
     xTest.txt: 2947 rows of 561 measurement variables (as listed in features.txt)
-    yTest.txt: 2947 rows of 1 variables (activity Identifier)
-    subjectTest.txt: 2497 rows of 1 variable (subject Identifier)
+    yTest.txt: 2947 rows of 1 variables (activity identifier)
+    subjectTest.txt: 2497 rows of 1 variable (subject identifier)
 
 Training Dataset
     xTrain.txt: 7352 rows of 561 measurement variables (as listed in features.txt)
-    yTrain.txt: 7352 rows of 1 variables (activity Identifier)
-    subjectTrain.txt: 7352 rows of 1 variable (subject Identifier)
+    yTrain.txt: 7352 rows of 1 variables (activity identifier)
+    subjectTrain.txt: 7352 rows of 1 variable (subject identifier)
     
 ----------------------------------------------------------------------------------------------
     
@@ -65,7 +65,8 @@ Functions of_analysis.R Script
     
     1. Read metadata: features and activities
     2. Read the test and train raw data in memory
-    3. Merge all data into one dataframe (rbind, cbind used.
+    3. Merge all data into one dataframe (rbind, cbind used), called "complete".
+    4. Name columns after feature: extracted from features and renamed columns:
          How this looks:
                 head(complete[1:5])
                         subject activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
@@ -75,13 +76,10 @@ Functions of_analysis.R Script
                       4       1        5         0.2791739       -0.02620065        -0.1232826
                       5       1        5         0.2766288       -0.01656965        -0.1153619
                       6       1        5         0.2771988       -0.01009785        -0.1051373
-                
-    4. Name columns after feature: extracted from features and renamed columns
     5. Extracts measurements on the mean and standard deviation for each measurement
             grep function used to search for occurance of mean mean() and standard deviation std()
     6. delete the meanFreq columns
             End up with a new dataframe called newDataFrame with 10299 observations and 68 variables, that beginning looks like:
-        
                 head(newDataFrame[1:5])
                           subject activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
                         1       1        5         0.2885845       -0.02029417        -0.1329051
@@ -103,7 +101,6 @@ Functions of_analysis.R Script
                             5       1        5         0.2789176      -0.016137590
                             6       1        6         0.2215982      -0.040513953
 
-
 8. Write output to "Samsung_Data.txt"
     Data frame is written to a file using write.table with separfator "\t", and row names explicity excluded as requested (row.name=FALSE)
 
@@ -111,6 +108,6 @@ Functions of_analysis.R Script
 
 Description of variables in the tidydata from tidyframe dataframe:
 
-1st. column named subject: rows identifies the subject who performed the activity for each window sample. Its range is from 1 to 30
-2nd. column named activity: Factor with 6 levels: "walk", "upstairswalk", "downstairswalk", "sit", "stand", "lay"
-3rd and rest up to of columns 68th: 66 columns with: Average of Mean Value for tBodyAcc-mean()-X  ... etc
+1st. column named "subject": rows identifies the subject who performed the activity for each window sample. Its range is from 1 to 30
+2nd. column named "activity": Factor with 6 levels: "walk", "upstairswalk", "downstairswalk", "sit", "stand", "lay"
+3rd and rest up to of columns up to 68th are 66 columns with: Average of Mean Value for tBodyAcc-mean()-X  ... etc
