@@ -62,7 +62,8 @@ Training Dataset
 ----------------------------------------------------------------------------------------------
     
 Functions of_analysis.R Script
-    
+
+    0. load data.table library
     1. Read metadata: features and activities
     2. Read the test and train raw data in memory
     3. Merge all data into one dataframe (rbind, cbind used), called "complete".
