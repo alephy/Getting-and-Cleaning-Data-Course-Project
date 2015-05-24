@@ -35,8 +35,8 @@ This is the tidy data file created after after running run_analysis.R script on 
 
 This tidy dataset contains following
 
-    180 observations and 68 variabiles (subject, activity + 66 columns for measurement variabiles)
-    Each measurement variable column is average value for each combination of subject and activity
+180 observations and 68 variabiles (subject, activity + 66 columns for measurement variabiles)
+Each measurement variable column is average value for each combination of subject and activity
 
 
 
